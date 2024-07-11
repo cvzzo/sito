@@ -1,0 +1,42 @@
+<!-- todo-list.component.html -->
+
+
+  
+  <body>
+    <h2 class="titolo">Todo List</h2>
+
+  
+    <div>
+  
+      <div class="inserimento">
+        <input [(ngModel)]="newTask" (keyup.enter)="addTask()" placeholder="Add new task" class="addTask">
+        <input [(ngModel)]="newDesc" (keyup.enter)="addTask()" placeholder="Description" class="addDesc">
+        <button (click)="addTask()">Add</button>
+      </div>
+      <div class="filter-buttons" *ngIf="todos.length > 0">
+        <button (click)="showAllTasks()" class="all">All</button>
+        <button (click)="showCompletedTasks()" class="checked">Completed</button>
+        <button (click)="showIncompleteTasks()" class="notChecked">Incomplete</button>
+      </div>
+  
+  
+  
+      <div class="task-container" *ngIf="filteredTodos.length > 0">
+        <article *ngFor="let todo of filteredTodos" class="nota">
+          <header>
+            <nav>
+              <span [class.completed]="todo.completed">{{ todo.task }}</span>
+              <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo)">
+            </nav>
+          </header>
+          <p [class.completed]="todo.completed">{{ todo.desc }}</p>
+          <div class="button-container">
+            <button (click)="deleteTask(todo.id)" class="delete">Delete</button>
+          </div>
+        </article>
+  
+      </div>
+  
+    </div>
+  
+  </body>
