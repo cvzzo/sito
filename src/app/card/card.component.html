@@ -1,0 +1,14 @@
+<div id="card">
+  <div id="cardTitle" class="div" (click)="toggleShowCard()">
+    <span>{{ cardTitle }}</span>
+  </div>
+  <div id="cardContent" [hidden]="showCard" >
+    <div id="cardUsername" class="div">
+      <span>{{ cardName }}</span>
+    </div>
+
+    <div id="cardPassword" class="div">
+      <span>{{ cardPassword }}</span>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,7 @@
-// src/main.ts
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { importProvidersFrom } from '@angular/core';
-import { AppRoutingModule } from './app/app-routing.module';
+import { provideRouter } from "@angular/router";
+import routeConfig from "./app/app.routes";
+import { bootstrapApplication } from "@angular/platform-browser";
+import { AppComponent } from "./app/app.component";
+import { error } from "console";
 
-bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(AppRoutingModule)]
-})
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {providers:[provideRouter(routeConfig)]}).catch((error)=> console.log(error));
