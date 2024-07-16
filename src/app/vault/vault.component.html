@@ -1,1 +1,59 @@
 <h2 class="titolo">Vault</h2>
+
+<div>
+  <img
+    src="assets/plus-svgrepo-com.png"
+    alt=""
+    width="100px"
+    (click)="toggleWindow()"
+  />
+</div>
+<div class="list">
+  <app-card
+    *ngFor="let item of vault"
+    [cardTitle]="item.title"
+    [cardName]="item.name"
+    [cardPassword]="item.password"
+  ></app-card>
+</div>
+
+<div *ngIf="popupShow" class="overlay">
+  <div #popup  ngClass="popup" id="popup">
+    <label for="Title">Name</label>
+    <input type="text" placeholder="Title" id="Title" [(ngModel)]="title" />
+    <label for="Name">Name</label>
+    <input type="text" placeholder="Name" id="Name" [(ngModel)]="name" />
+
+    <label for="password">Password</label>
+
+    <div class="input-container">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Enter password"
+        class="password-input"
+        [(ngModel)]="password"
+      />
+      <button
+        type="button"
+        (click)="togglePasswordVisibility()"
+        class="toggle-button"
+        style="
+          background: url(assets/glasses-svgrepo-com.png) no-repeat center;
+          width: 100px;
+          height: 65.633px;
+          background-size: 50px;
+        "
+      ></button>
+    </div>
+    <div class="saveDiv">
+      <button class="back" (click)="goBack()">Back</button>
+      <button
+        [disabled]="!(title && name && password)"
+        class="save"
+        (click)="addToVault()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
